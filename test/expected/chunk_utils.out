@@ -283,6 +283,11 @@ SELECT * FROM _timescaledb_catalog.dimension_slice ORDER BY id;
  24 |            3 |                    6 |                   7
 (24 rows)
 
+-- Truncating chunks is not supported
+\set ON_ERROR_STOP 0
+TRUNCATE TABLE _timescaledb_internal._hyper_2_7_chunk;
+ERROR:  truncating chunks is not supported
+\set ON_ERROR_STOP 1
 -- Drop one chunk "manually" and verify that dimension slices and
 -- constraints are cleaned up. Each chunk has two constraints and two
 -- dimension slices. Both constraints should be deleted, but only one
@@ -669,7 +674,7 @@ ORDER BY c.id;
 \set QUERY1 'SELECT show_chunks(\'drop_chunk_test1\', newer_than=>5)::NAME'
 \set QUERY2 'SELECT drop_chunks(\'drop_chunk_test1\', newer_than=>5, verbose => true)::NAME'
 \set ECHO errors
-psql:include/query_result_test_equal.sql:16: INFO:  dropping chunk _timescaledb_internal._hyper_1_5_chunk
+psql:include/query_result_test_equal.sql:14: INFO:  dropping chunk _timescaledb_internal._hyper_1_5_chunk
  Different Rows | Total Rows from Query 1 | Total Rows from Query 2 
 ----------------+-------------------------+-------------------------
               0 |                       1 |                       1
