@@ -27,7 +27,7 @@ assign_min_reviewers_randomly: true
 min_authors_of_changed_files: 0
 
 # minimum percent of lines authored by a reviewer to require an extra reviewer (set to 0 to disable)
-min_percent_authorship_for_extra_reviewer: 30
+min_percent_authorship_for_extra_reviewer: 50
 
 # minimum number of lines that must be changed to add an extra reviewer (set to 0 to disable)
 min_lines_changed_for_extra_reviewer: 0
@@ -53,3 +53,12 @@ reviewers:
 review_blacklist:
   - horzsolt
 
+# ignore changes to the test output files. 
+# 1. because they usually will have equivalent .sql files
+# 2. because people that modify a test, don't necessarily change the same c-functionality at all
+# so tests should be less important than C files
+file_blacklist:
+  - test/sql/*.sql
+  - tsl/test/sql/*.sql
+  - tsl/test/expected/*.out
+  - test/expected/*.out
