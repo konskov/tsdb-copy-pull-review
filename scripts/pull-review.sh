@@ -6,8 +6,6 @@
 PULL_REVIEW_GITHUB_TOKEN=$1
 PULL_REQUEST_URL=$2
 
-docker pull ghcr.io/imsky/pull-review
-
 # this is what we should run eventually
 # docker run ghcr.io/imsky/pull-review $PULL_REQUEST_URL --github-token $PULL_REVIEW_GITHUB_TOKEN
 
