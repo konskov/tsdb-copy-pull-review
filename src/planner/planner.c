@@ -482,20 +482,20 @@ timescaledb_planner(Query *parse, int cursor_opts, ParamListInfo bound_params)
 			{
 				reset_fetcher_type = true;
 
-				if (ts_guc_remote_data_fetcher == AutoFetcherType)
+				if (context.num_distributed_tables >= 2)
 				{
-					if (context.num_distributed_tables >= 2)
-					{
-						ts_data_node_fetcher_scan_type = CursorFetcherType;
-					}
-					else
-					{
-						ts_data_node_fetcher_scan_type = RowByRowFetcherType;
-					}
+					ts_data_node_fetcher_scan_type = CursorFetcherType;
 				}
 				else
 				{
-					ts_data_node_fetcher_scan_type = ts_guc_remote_data_fetcher;
+					if (ts_guc_remote_data_fetcher == AutoFetcherType)
+					{
+						ts_data_node_fetcher_scan_type = RowByRowFetcherType;
+					}
+					else
+					{
+						ts_data_node_fetcher_scan_type = ts_guc_remote_data_fetcher;
+					}
 				}
 			}
 
