@@ -12,7 +12,7 @@ max_files: 0 # evaluate all files of the PR
 min_reviewers: 2
 
 # maximum number of reviewers to assign and notify for a pull request
-max_reviewers: 3
+max_reviewers: 2
 
 # maximum number of files per reviewer (set to 0 for no limit)
 max_files_per_reviewer: 0
@@ -27,7 +27,7 @@ assign_min_reviewers_randomly: true
 min_authors_of_changed_files: 0
 
 # minimum percent of lines authored by a reviewer to require an extra reviewer (set to 0 to disable)
-min_percent_authorship_for_extra_reviewer: 50
+min_percent_authorship_for_extra_reviewer: 0
 
 # minimum number of lines that must be changed to add an extra reviewer (set to 0 to disable)
 min_lines_changed_for_extra_reviewer: 0
