@@ -9,7 +9,7 @@ use_review_requests: true
 max_files: 0 # evaluate all files of the PR
 
 # minimum number of reviewers to assign and notify for a pull request
-min_reviewers: 3
+min_reviewers: 2
 
 # maximum number of reviewers to assign and notify for a pull request
 max_reviewers: 3
@@ -59,7 +59,5 @@ review_blacklist:
 # 2. because people that modify a test, don't necessarily change the same c-functionality at all
 # so tests should be less important than C files
 file_blacklist:
-  - test/sql/*.sql
-  - tsl/test/sql/*.sql
   - tsl/test/expected/*.out
   - test/expected/*.out
